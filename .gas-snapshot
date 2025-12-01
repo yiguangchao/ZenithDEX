@@ -1,0 +1,6 @@
+ZenithDEXFactoryTest:testCannotCreateExistingPair() (gas: 1413807)
+ZenithDEXFactoryTest:testCannotCreateExistingPairReverse() (gas: 1413772)
+ZenithDEXFactoryTest:testCannotCreatePairWithIdenticalTokens() (gas: 12100)
+ZenithDEXFactoryTest:testCannotCreatePairWithZeroAddress() (gas: 12076)
+ZenithDEXFactoryTest:testCreatePair() (gas: 1416375)
+ZenithDEXFactoryTest:testEmitPairCreated() (gas: 1413936)
