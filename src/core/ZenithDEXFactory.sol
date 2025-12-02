@@ -43,7 +43,7 @@ contract ZenithDEXFactory {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
         //init Pair
-        //ZenithDEXPair(pair).initialize(token0, token1);
+        ZenithDEXPair(pair).initialize(token0, token1);
 
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair;
