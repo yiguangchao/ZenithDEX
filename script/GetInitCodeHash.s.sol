@@ -6,11 +6,11 @@ import "../src/core/ZenithDEXPair.sol";
 
 contract GetInitCodeHash is Script {
     function run() public pure {
-        // 获取 ZenithDEXPair 的创建字节码
+        // Obtain the bytecode for creating ZenithDEXPair
         bytes memory bytecode = type(ZenithDEXPair).creationCode;
-        // 计算哈希
+        // Calculate hash
         bytes32 hash = keccak256(bytecode);
-        // 打印出来
+        // print
         console.log("INIT_CODE_HASH:");
         console.logBytes32(hash);
     }
