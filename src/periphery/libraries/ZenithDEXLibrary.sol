@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 // import "../../core/interfaces/ISimpleSwapPair.sol";
-import "../core/ZenithDEXPair.sol";
+import "../../core/ZenithDEXPair.sol";
 
 library ZenithDEXLibrary {
     // 1. sort Token
@@ -42,5 +42,17 @@ library ZenithDEXLibrary {
         uint numerator = amountInWithFee * reserveOut;
         uint denominator = (reserveIn * 1000) + amountInWithFee;
         amountOut = numerator / denominator;
+    }
+
+    // 5. Chain computing: Given the input amount In and path path, calculate the output of each step
+    function getAmountsOut(address factory, uint amountIn, address[] memory path) internal view returns (uint[] memory amounts) {
+        require(path.length >= 2, "ZenithDEXLibrary: INVALID_PATH");
+        amounts = new uint[](path.length);
+        amounts[0] = amountIn;
+        
+        for (uint i; i < path.length - 1; i++) {
+            (uint reserveIn, uint reserveOut) = getReserves(factory, path[i], path[i + 1]);
+            amounts[i + 1] = getAmountOut(amounts[i], reserveIn, reserveOut);
+        }
     }
 }
