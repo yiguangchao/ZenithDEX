@@ -9,7 +9,6 @@ contract ActionSwap is Script {
         uint256 deployerPrivateKey = vm.envOr("PRIVATE_KEY", uint256(0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80));
         vm.startBroadcast(deployerPrivateKey);
 
-        address pairAddress = C02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2; 
-
+        address pairAddress = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
     }
 }
