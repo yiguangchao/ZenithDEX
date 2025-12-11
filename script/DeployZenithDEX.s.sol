@@ -19,6 +19,7 @@ contract DeployZenithDEX is Script {
 
         // 3. Deploy WETH (for testing purposes, we will first deploy a fake WETH and use the real one for the actual main network)
         address wethAddress = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2); 
+        console.log("Pair deployed at:", wethAddress);
 
         // 4. Deploy Router
         ZenithDEXRouter router = new ZenithDEXRouter(address(factory), wethAddress);
