@@ -9,4 +9,6 @@ interface ISimpleSwapPair {
     // Because Pair is ERC20, Router sometimes needs to call transfer/apply
     function transferFrom(address from, address to, uint value) external returns (bool);
     function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
+    function token0() external view returns (address);
+    function token1() external view returns (address);
 }
