@@ -6,7 +6,9 @@ import "@solmate/tokens/ERC20.sol"; // It inherits from ERC20, because LP Token 
 import "./libraries/Math.sol";
 // import "./libraries/UQ112x112.sol"; // A library for handling price accuracy
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
+interface IZenithCallee {
+    function zenithCall(address sender, uint amount0, uint amount1, bytes calldata data) external;
+}
 contract ZenithDEXPair is ERC20 {
     // 1. state variable
     uint256 public constant MINIMUM_LIQUIDITY = 10**3; // Minimum liquidity, anti-attack
@@ -129,7 +131,7 @@ contract ZenithDEXPair is ERC20 {
             if (amount1Out > 0) IERC20(_token1).transfer(to, amount1Out);
             
             // If there is data in the data, this will trigger a callback for lightning loans (callee. zenithCall)
-            // if (data.length > 0) IZenithCallee(to).zenithCall(msg.sender, amount0Out, amount1Out, data);
+            if (data.length > 0) IZenithCallee(to).zenithCall(msg.sender, amount0Out, amount1Out, data);
 
             // Obtain the balance after transfer
             balance0 = IERC20(_token0).balanceOf(address(this));
