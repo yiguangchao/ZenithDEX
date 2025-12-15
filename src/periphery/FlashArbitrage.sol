@@ -3,10 +3,7 @@ pragma solidity ^0.8.20;
 
 import "@solmate/tokens/ERC20.sol";
 import "../core/interfaces/ISimpleSwapPair.sol";
-
-interface IZenithCallee {
-    function zenithCall(address sender, uint amount0, uint amount1, bytes calldata data) external;
-}
+import "../core/interfaces/IZenithCallee.sol";
 
 contract FlashArbitrage is IZenithCallee {
     address public immutable factory;

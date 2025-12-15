@@ -6,9 +6,8 @@ import "@solmate/tokens/ERC20.sol"; // It inherits from ERC20, because LP Token 
 import "./libraries/Math.sol";
 // import "./libraries/UQ112x112.sol"; // A library for handling price accuracy
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-interface IZenithCallee {
-    function zenithCall(address sender, uint amount0, uint amount1, bytes calldata data) external;
-}
+import "./interfaces/IZenithCallee.sol";
+
 contract ZenithDEXPair is ERC20 {
     // 1. state variable
     uint256 public constant MINIMUM_LIQUIDITY = 10**3; // Minimum liquidity, anti-attack

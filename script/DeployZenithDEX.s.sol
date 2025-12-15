@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import "forge-std/Script.sol";
 import "../src/core/ZenithDEXFactory.sol";
 import "../src/periphery/ZenithDEXRouter.sol";
+import "../src/periphery/FlashArbitrage.sol";
 
 contract DeployZenithDEX is Script {
     function run() external {
@@ -24,6 +25,10 @@ contract DeployZenithDEX is Script {
         // 4. Deploy Router
         ZenithDEXRouter router = new ZenithDEXRouter(address(factory), wethAddress);
         console.log("Router deployed at:", address(router));
+
+        // 3. Deploy FlashArbitrage
+        FlashArbitrage flashBot = new FlashArbitrage(address(factory));
+        console.log("FlashArbitrage deployed at:", address(flashBot));
 
         vm.stopBroadcast();
     }
