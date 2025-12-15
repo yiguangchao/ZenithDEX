@@ -20,7 +20,7 @@ library ZenithDEXLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1)),
-                hex'ace8a29bf09a29ec4c6c546400402450c88d35eb4ce5a27df614887ce4ab5d42' 
+                hex'5f9258599943e5152a23f7bfb8b8ca9f715f65550ed1347206d6a96c8837d30a' 
             )))));
     }
 
